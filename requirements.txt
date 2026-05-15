@@ -1,0 +1,43 @@
+# requirements.txt
+
+# --- Web framework ---
+fastapi==0.111.0
+uvicorn[standard]==0.29.0
+python-multipart==0.0.9        # Required by FastAPI for file uploads
+
+# --- PDF extraction ---
+pypdf==4.2.0                   # Pure Python, no binary dependencies
+
+# --- ML core ---
+# CPU NOTE: Install torch separately FIRST using the command below.
+# Do NOT include torch here — pip install -r requirements.txt will
+# try to pull the CUDA wheel from PyPI and fail.
+#
+#   pip install torch==2.9.1+cpu --index-url https://download.pytorch.org/whl/cpu
+#
+numpy==1.26.4                  # Pin to 1.x — better compatibility with transformers
+scikit-learn==1.5.0            # TF-IDF vectorizer + cosine similarity for TextRank
+
+# --- HuggingFace (runs fully local — no API calls, no model downloads at runtime) ---
+transformers==4.41.0           # DistilBERT architecture + tokenizer
+datasets==2.19.0               # CUAD download to local disk (one time only)
+tokenizers==0.19.1             # Fast Rust-backed tokenizer, required by transformers
+
+# --- NLP utilities ---
+nltk==3.8.1                    # Sentence splitting for chunker and TextRank
+networkx==3.3                  # Graph algorithm for TextRank summarization
+
+# --- Vector store ---
+psycopg2-binary==2.9.9         # PostgreSQL driver
+pgvector==0.2.5                # Adds vector type support to psycopg2
+
+# --- Config and utilities ---
+pydantic==2.7.1
+pydantic-settings==2.3.0
+python-dotenv==1.0.1
+loguru==0.7.2
+tqdm==4.66.4                   # Progress bars in training loops
+
+# --- Dev / testing ---
+pytest==8.2.0
+httpx==0.27.0                  # Async test client for FastAPI

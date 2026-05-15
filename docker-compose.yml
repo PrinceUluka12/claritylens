@@ -1,0 +1,34 @@
+services:
+  postgres:
+    # pgvector/pgvector is an official image with the vector
+    # extension pre-installed. No manual compilation needed.
+    image: pgvector/pgvector:pg16
+
+    container_name: claritylens_postgres
+
+    environment:
+      POSTGRES_USER: claritylens
+      POSTGRES_PASSWORD: claritylens
+      POSTGRES_DB: claritylens
+
+    ports:
+      # host:container
+      # Your Python code connects to localhost:5432
+      - "5432:5432"
+
+    volumes:
+      # Named volume: data survives even if you delete the container
+      - pgdata:/var/lib/postgresql/data
+
+      # This SQL file runs automatically on first startup only
+      - ./docker/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U claritylens -d claritylens"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  pgdata:
+    driver: local

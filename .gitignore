@@ -1,0 +1,52 @@
+# .gitignore
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+dist/
+build/
+
+# --- Environment (NEVER commit this) ---
+.env
+*.env.local
+
+# --- ML model weights ---
+# These are large binary files — hundreds of MB each.
+# Recreate them by running the training scripts.
+ml/models/**/*.pt
+ml/models/**/*.bin
+ml/models/**/*.safetensors
+ml/models/**/pytorch_model*
+ml/models/**/model.safetensors
+
+# --- Datasets ---
+# CUAD is 500 contracts — don't commit it.
+# Re-download with: python ml/training/download_cuad.py
+ml/data/cuad/
+ml/data/processed/
+
+# --- Uploaded files ---
+# User uploads are runtime data, not source code
+storage/uploads/
+storage/extracted/
+
+# --- Node / React ---
+node_modules/
+frontend/dist/
+frontend/.env.local
+
+# --- Docker runtime data ---
+docker/pgdata/
+
+# --- OS files ---
+.DS_Store
+Thumbs.db
+
+# --- IDE ---
+.vscode/
+.idea/
+*.swp
+*.swo
