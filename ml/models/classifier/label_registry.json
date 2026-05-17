@@ -1,0 +1,26 @@
+{
+  "labels": [
+    "data_privacy",
+    "indemnity",
+    "ip_assignment",
+    "liability_cap",
+    "non_compete",
+    "termination"
+  ],
+  "label_to_id": {
+    "data_privacy": 0,
+    "indemnity": 1,
+    "ip_assignment": 2,
+    "liability_cap": 3,
+    "non_compete": 4,
+    "termination": 5
+  },
+  "id_to_label": {
+    "0": "data_privacy",
+    "1": "indemnity",
+    "2": "ip_assignment",
+    "3": "liability_cap",
+    "4": "non_compete",
+    "5": "termination"
+  }
+}
