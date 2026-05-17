@@ -55,7 +55,7 @@ class EmbedderInference:
 
         # Load vocabulary
         vocab_path = model_dir / "word2vec_vocab.json"
-        with open(vocab_path) as f:
+        with open(vocab_path, encoding="utf-8") as f:
             self.word_to_idx = json.load(f)
 
         # Load embedding matrix
